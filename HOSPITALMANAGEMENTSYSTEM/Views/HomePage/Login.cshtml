@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/HomePage/HomeMaster.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="col-md-8" style="margin-left:300px;margin-top:100px">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.ActionLink(" ", "AdminLogin", "Admin", new { @style = "background:url('/images/Admin-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 140px" })
+                        <br /><h4 style="margin-left: 25px"><b>ADMIN</b></h4>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ActionLink(" ", "DoctorLogin", "Doctor", new { @style = "background:url('/images/Doctor-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 145px" })
+                        <br /><h4 style="margin-left: 25px"><b>DOCTOR</b></h4>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ActionLink(" ", "PatientLogin", "Patient", new { @style = "background:url('/images/patient-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 140px" })
+                        <br /><h4 style="margin-left: 25px"><b>PATIENT</b></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
