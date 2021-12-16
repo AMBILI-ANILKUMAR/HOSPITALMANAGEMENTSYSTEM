@@ -21,5 +21,17 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         {
             return View();
         }
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        public ActionResult DoctorLogin()
+        {
+            return View();
+        }
+        public ActionResult PatientLogin()
+        {
+            return View();
+        }
     }
 }
