@@ -1,0 +1,121 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Patients
+
+@{
+    ViewBag.Title = "AddPatient";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addpatientview</title>
+</head>
+<body style="background-color: #f4f5e2">
+    <center>
+        <h1 class="text-primary">Patient Registration</h1>
+        <br />
+
+
+        @using (Html.BeginForm("AddPatient", "Admin", FormMethod.Post))
+        {
+            <table width="50%" border="0">
+                <tr>
+                    <td>Enter Patient Id  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.PatId, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PatId, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> Enter Student Name  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.PatName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PatName, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Gender  </td>
+                    <td>
+                        @Html.RadioButtonFor(e => e.Gender, "Male")Male
+                        @Html.RadioButtonFor(e => e.Gender, "Female")Female
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Address  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.phonenumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.age, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Blood Group  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.bloodgrp, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.bloodgrp, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password  </td>
+                    <td>
+                        @Html.TextBoxFor(e => e.password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <br />
+                    <td colspan="2">
+                        <input type="submit" value="Register" class="btn btn-primary text-light" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">@ViewBag.update</td>
+                </tr>
+            </table>
+            }
+    </center>
+</body>
+</html>
+
+
+
+
+
+
