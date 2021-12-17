@@ -182,10 +182,13 @@
     <Content Include="Views\HomePage\AdminLogin.cshtml" />
     <Content Include="Views\HomePage\DoctorLogin.cshtml" />
     <Content Include="Views\HomePage\PatientLogin.cshtml" />
+    <Content Include="Views\Admin\AdminMaster.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
+    <Content Include="Views\Admin\AddSpecialization.cshtml" />
+    <Content Include="Views\Admin\AddDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Doctor\" />
     <Folder Include="Views\Patient\" />
   </ItemGroup>

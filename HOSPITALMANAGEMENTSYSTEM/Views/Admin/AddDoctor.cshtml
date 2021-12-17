@@ -1,0 +1,102 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Doctors
+@using HOSPITALMANAGEMENTSYSTEM.Models;
+
+
+@{
+    ViewBag.Title = "AddDoctor";
+    Layout = "AdminMaster.cshtml"; }
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+
+        <div class="col-md-7" style="margin-left:200px;">
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <b>DOCTOR ID</b>
+                            @Html.EditorFor(model => model.DoctId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DoctId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>DOCTOR NAME</b>
+                            @Html.EditorFor(model => model.DoctId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DoctId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>GENDER</b>
+
+                            @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(gen))),
+                            "Select", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <b>SPECIALIZATION</b>
+                            @Html.EditorFor(model => model.DoctId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DoctId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>ROLE</b>
+                            @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>AGE</b>
+
+                            @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <b>ADDRESS</b>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>PHONE NUMBER</b>
+                            @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <b>PASSWORD</b>
+
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="ADD STUDENT" class="btn btn-primary" />
+                            <p style="color:red">@ViewBag.info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+   
+}
+
+

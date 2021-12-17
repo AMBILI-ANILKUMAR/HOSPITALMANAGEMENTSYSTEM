@@ -26,4 +26,9 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
 
         public string password { get; set; }
     }
+    public enum gen
+    {
+        Male,
+        Female
+    }
 }
