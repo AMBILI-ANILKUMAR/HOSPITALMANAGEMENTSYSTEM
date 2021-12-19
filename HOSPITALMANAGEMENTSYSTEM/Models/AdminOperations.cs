@@ -32,6 +32,13 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             }
             return b;
         }
+        public DataSet ViewSpecialization()
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Specialization order by spclId asc", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "spcl");
+            return ds;
+        }
         public IEnumerable<Specializations> GetSpclData()
         {
             SqlDataAdapter data = new SqlDataAdapter("Select * from Specialization order by spclId", con);
@@ -74,6 +81,13 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             }
             return b;
         }
+        public DataSet ViewDoctor()
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Doctors as d inner join Specialization as s on d.spclId=s.spclId", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "doc");
+            return ds;
+        }
         public bool AddPatients(Patients p)
         {
             bool b = false;
@@ -95,6 +109,13 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 b = true;
             
             return b;
+        }
+        public DataSet ShowPatient()
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Patients", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "pat");
+            return ds;
         }
     }
 }

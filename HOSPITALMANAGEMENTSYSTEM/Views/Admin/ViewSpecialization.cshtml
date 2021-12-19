@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Specializations>
+
+@{
+    ViewBag.Title = "ViewSpecialization";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+<center>
+    <h3 style="margin-top: 50px;">
+        @using (Html.BeginForm("ViewSpecialization", "Admin", FormMethod.Post))
+        {
+
+            @Html.ActionLink("ADD SPECIALIZATION", "AddSpecialization", "Admin", new { @class = "btn btn-dark" })
+        }
+
+    </h3>
+    <br />
+    <table class="table table-bordered table-hover" style="width:60%;">
+        <thead>
+            <tr>
+                <th>
+                    SPECIALIZATION ID
+                </th>
+                <th>
+                    SPECIALIZATION NAME
+
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.spclId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specializationName)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</center>
+
+
+
+
+
+

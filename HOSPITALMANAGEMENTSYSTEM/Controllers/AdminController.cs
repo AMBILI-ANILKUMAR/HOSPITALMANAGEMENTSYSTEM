@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
+using System.Data;
 using HOSPITALMANAGEMENTSYSTEM.Models;
 namespace HOSPITALMANAGEMENTSYSTEM.Controllers
 {
     public class AdminController : Controller
     {
         AdminOperations aop = new AdminOperations();
+        List<Specializations> slst = new List<Specializations>();
+        List<Doctors> dlst = new List<Doctors>();
+        List<Patients> plst = new List<Patients>();
+
+
         // GET: Admin
         public ActionResult AdminLogin()
         {
@@ -35,6 +42,20 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 ViewBag.info = "Added Successfully";
             return View();
         }
+        public ActionResult ViewSpecialization()
+        {
+
+            DataSet ds = aop.ViewSpecialization();
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    Specializations c = new Specializations();
+                    c.spclId = int.Parse(ds.Tables[0].Rows[i]["spclId"].ToString());
+                    c.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                    slst.Add(c);
+                }
+                return View(slst);
+            
+        }
         public ActionResult AddDoctor()
         {
             Doctors d = new Doctors();
@@ -55,6 +76,28 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 d.SpclDropdown = new SelectList(aop.GetSpclData(), "spclId", "specializationName");
             }
             return View(d);
+        }
+        public ActionResult ViewDoctor()
+        {
+
+            DataSet ds = aop.ViewDoctor();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Doctors d = new Doctors();
+                d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                d.age =int.Parse( ds.Tables[0].Rows[i]["age"].ToString());
+                d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                d.role = ds.Tables[0].Rows[i]["role"].ToString();
+                d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                d.password = ds.Tables[0].Rows[i]["password"].ToString();
+
+                dlst.Add(d);
+            }
+            return View(dlst);
         }
         public ActionResult AddPatient()
         {
@@ -85,6 +128,26 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 ViewBag.info = "Added Successfully";
             }
            return View(p);
+        }
+        public ActionResult ShowPatient()
+        {
+            DataSet ds = aop.ShowPatient();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Patients d = new Patients();
+                d.PatId = ds.Tables[0].Rows[i]["PatId"].ToString();
+                d.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                d.bloodgrp = ds.Tables[0].Rows[i]["bloodgrp"].ToString();
+                d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                d.password = ds.Tables[0].Rows[i]["password"].ToString();
+
+                plst.Add(d);
+            }
+            return View(plst);
         }
     }
 }

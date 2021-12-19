@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Patients>
+
+@{
+    ViewBag.Title = "ShowPatient";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+<center>
+    <br />
+    <h2>PATIENTS</h2>
+    <br />
+    <table class="table table-hover">
+        <tr>
+            <th>
+                PATIENT ID
+            </th>
+            <th>
+                PATIENT NAME
+            </th>
+            <th>
+                GENDER
+            </th>
+            <th>
+                ADDRESS
+            </th>
+
+            <th>
+                PHONE NUMBER
+            </th>
+            <th>
+                AGE
+            </th>
+            <th>
+                BLOOD GROUP
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                PASSWORD
+            </th>
+
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phonenumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bloodgrp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</center>
+
+
+
