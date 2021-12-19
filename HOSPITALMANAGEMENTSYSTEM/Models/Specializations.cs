@@ -8,6 +8,9 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
     public class Specializations
     {
         public int spclId { get; set; }
-        public string specializationName { get; set; }
+        public String specializationName { get; set; }
     }
+
+
+    
 }
