@@ -53,7 +53,7 @@
 
                                 <div class="col-md-4">
                                     <b>AGE</b>
-                                    @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.TextBoxFor(model => model.age,new { @class = "form-control"  })
                                     @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-4">
@@ -80,7 +80,7 @@
                                 <div class="col-md-4">
                                     <b>PASSWORD</b>
 
-                                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.PasswordFor(model => model.password,new { @class = "form-control" })
 
                                     @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                                 </div>
