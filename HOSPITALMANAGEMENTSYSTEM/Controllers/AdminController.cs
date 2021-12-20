@@ -230,8 +230,8 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 {
                     Appointments d = new Appointments();
                     d.AppointmentId= ds.Tables[0].Rows[i]["AppointmentId"].ToString();
-                    d.PatId = ds.Tables[0].Rows[i]["PatId"].ToString();
-                    d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    d.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                    d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
                     d.disease = ds.Tables[0].Rows[i]["disease"].ToString();
                     d.Date =DateTime.Parse( ds.Tables[0].Rows[i]["AppDate"].ToString());
                     d.AppTime = (ds.Tables[0].Rows[i]["AppTime"].ToString());

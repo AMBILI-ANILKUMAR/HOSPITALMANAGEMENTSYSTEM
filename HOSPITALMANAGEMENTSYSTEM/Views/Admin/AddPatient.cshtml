@@ -43,7 +43,7 @@
                                         <b>GENDER</b><br />
                                         @Html.RadioButtonFor(e => e.Gender, "Male", new { @class = "form - check - input" })Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         @Html.RadioButtonFor(e => e.Gender, "Female", new { @class = "form - check - input" })Female
-                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                       <br/> @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <br />

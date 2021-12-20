@@ -94,7 +94,8 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         public bool AddPatients(Patients p)
         {
             bool b = false;
-            
+            try
+            {
                 //create table Doctors(DoctId varchar(5) primary key,DoctName varchar(20),Gender varchar(10),Address varchar(50),phonenumber char(10),
                 //age int, spclId int , foreign key(spclId) references Specialization, role varchar(10),email varchar(30),password varchar(10))
                 con.Open();
@@ -110,8 +111,13 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 cmd.Parameters.AddWithValue("@pwd", p.password);
                 cmd.ExecuteNonQuery();
                 b = true;
-            
+            }
+            catch
+            {
+                b = false;
+            }
             return b;
+
         }
         public DataSet ShowPatient()
         {
@@ -175,7 +181,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         }
         public DataSet ViewAppointment()
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("select * from Appointments", con);
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Appointments as a inner join Doctors as d on a.DoctId=d.DoctId inner join Patients as p on a.PatId=p.PatId", con);
             DataSet ds = new DataSet();
             adpt.Fill(ds, "apt");
             return ds;
