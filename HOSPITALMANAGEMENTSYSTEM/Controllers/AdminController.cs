@@ -14,10 +14,27 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         List<Specializations> slst = new List<Specializations>();
         List<Doctors> dlst = new List<Doctors>();
         List<Patients> plst = new List<Patients>();
+        List<Appointments> alst = new List<Appointments>();
 
 
         // GET: Admin
         public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        public ActionResult Appointment()
+        {
+            return View();
+        }
+        public ActionResult Specialization()
+        {
+            return View();
+        }
+        public ActionResult Doctor()
+        {
+            return View();
+        }
+        public ActionResult Patient()
         {
             return View();
         }
@@ -39,22 +56,26 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         {
             bool b = aop.AddSpecialization(s);
             if (b == true)
+            {
                 ViewBag.info = "Added Successfully";
+                return RedirectToAction("ViewSpecialization");
+            }
             return View();
         }
         public ActionResult ViewSpecialization()
         {
 
             DataSet ds = aop.ViewSpecialization();
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    Specializations c = new Specializations();
-                    c.spclId = int.Parse(ds.Tables[0].Rows[i]["spclId"].ToString());
-                    c.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
-                    slst.Add(c);
-                }
-                return View(slst);
-            
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Specializations c = new Specializations();
+                c.spclId = int.Parse(ds.Tables[0].Rows[i]["spclId"].ToString());
+                c.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                slst.Add(c);
+            }
+            return View(slst);
+
         }
         public ActionResult AddDoctor()
         {
@@ -70,6 +91,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             {
                 d.SpclDropdown = new SelectList(aop.GetSpclData(), "spclId", "specializationName");
                 ViewBag.info = "Added Successfully";
+                return RedirectToAction("ViewDoctor");
             }
             else
             {
@@ -81,23 +103,30 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         {
 
             DataSet ds = aop.ViewDoctor();
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            if ((ds.Tables["doc"].Rows.Count > 0))
             {
-                Doctors d = new Doctors();
-                d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
-                d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
-                d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
-                d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
-                d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
-                d.age =int.Parse( ds.Tables[0].Rows[i]["age"].ToString());
-                d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
-                d.role = ds.Tables[0].Rows[i]["role"].ToString();
-                d.email = ds.Tables[0].Rows[i]["email"].ToString();
-                d.password = ds.Tables[0].Rows[i]["password"].ToString();
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    Doctors d = new Doctors();
+                    d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                    d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                    d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                    d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                    d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                    d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                    d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                    d.password = ds.Tables[0].Rows[i]["password"].ToString();
 
-                dlst.Add(d);
+                    dlst.Add(d);
+                }
+                return View(dlst);
             }
-            return View(dlst);
+            else
+            {
+                ViewBag.info = "No Doctors Added Yet!";
+                return View(dlst);
+            }
         }
         public ActionResult AddPatient()
         {
@@ -108,7 +137,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         {
             if (p.bloodgrp == "0")
                 p.bloodgrp = "A+";
-            else if(p.bloodgrp=="1")
+            else if (p.bloodgrp == "1")
                 p.bloodgrp = "A-";
             else if (p.bloodgrp == "2")
                 p.bloodgrp = "B+";
@@ -126,28 +155,95 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             if (b == true)
             {
                 ViewBag.info = "Added Successfully";
+                return RedirectToAction("ShowPatient");
             }
-           return View(p);
+            return View(p);
         }
         public ActionResult ShowPatient()
         {
             DataSet ds = aop.ShowPatient();
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            if ((ds.Tables["pat"].Rows.Count > 0))
             {
-                Patients d = new Patients();
-                d.PatId = ds.Tables[0].Rows[i]["PatId"].ToString();
-                d.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
-                d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
-                d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
-                d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
-                d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
-                d.bloodgrp = ds.Tables[0].Rows[i]["bloodgrp"].ToString();
-                d.email = ds.Tables[0].Rows[i]["email"].ToString();
-                d.password = ds.Tables[0].Rows[i]["password"].ToString();
-
-                plst.Add(d);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    Patients d = new Patients();
+                    d.PatId = ds.Tables[0].Rows[i]["PatId"].ToString();
+                    d.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                    d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                    d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                    d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                    d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                    d.bloodgrp = ds.Tables[0].Rows[i]["bloodgrp"].ToString();
+                    d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                    d.password = ds.Tables[0].Rows[i]["password"].ToString();
+                    plst.Add(d);
+                }
+                return View(plst);
             }
-            return View(plst);
+            else
+            {
+                ViewBag.info = "No Patients Added Yet!";
+                return View(plst);
+            }
+        }
+        public ActionResult AddAppointments()
+        {
+            Appointments a = new Appointments();
+            a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+            a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
+            return View(a);
+        }
+        [HttpPost]
+        public ActionResult AddAppointments(Appointments a)
+        {
+            if (a.AppTime == "0")
+                a.AppTime = "9AM - 12PM";
+            else if(a.AppTime == "1")
+                a.AppTime = "2PM - 4PM";
+            else
+                a.AppTime = "5PM - 6PM";
+
+            bool b = aop.AddAppointment(a);
+            if(b==true)
+            {
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+                a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
+                ViewBag.info = "Added Successfully";
+                return RedirectToAction("ViewAppointment");
+
+            }
+            else
+            {
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+                a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
+                ViewBag.info = "Not Added";
+
+            }
+            return View(a);
+        }
+        public ActionResult ViewAppointment()
+        {
+            DataSet ds = aop.ViewAppointment();
+            if ((ds.Tables["apt"].Rows.Count > 0))
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    Appointments d = new Appointments();
+                    d.AppointmentId= ds.Tables[0].Rows[i]["AppointmentId"].ToString();
+                    d.PatId = ds.Tables[0].Rows[i]["PatId"].ToString();
+                    d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    d.disease = ds.Tables[0].Rows[i]["disease"].ToString();
+                    d.Date =DateTime.Parse( ds.Tables[0].Rows[i]["AppDate"].ToString());
+                    d.AppTime = (ds.Tables[0].Rows[i]["AppTime"].ToString());
+                    alst.Add(d);
+                }
+                return View(alst);
+            }
+            else
+            {
+                ViewBag.info = "No Appointments Added Yet!";
+                return View(alst);
+            }
         }
     }
 }

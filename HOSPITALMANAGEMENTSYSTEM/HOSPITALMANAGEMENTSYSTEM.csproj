@@ -145,9 +145,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\add.png" />
     <Content Include="images\Admin-icon.png" />
     <Content Include="images\adminhome.jpg" />
     <Content Include="images\Doctor-icon.png" />
+    <Content Include="images\doctor.png" />
     <Content Include="images\facebook.png" />
     <Content Include="images\google.png" />
     <Content Include="images\home5.jpg" />
@@ -200,6 +202,12 @@
     <Content Include="Views\Admin\ViewSpecialization.cshtml" />
     <Content Include="Views\Admin\ViewDoctor.cshtml" />
     <Content Include="Views\Admin\ShowPatient.cshtml" />
+    <Content Include="Views\Admin\Specialization.cshtml" />
+    <Content Include="Views\Admin\Doctor.cshtml" />
+    <Content Include="Views\Admin\Patient.cshtml" />
+    <Content Include="Views\Admin\Appointment.cshtml" />
+    <Content Include="Views\Admin\DoctorSpecialization.cshtml" />
+    <Content Include="Views\Admin\ViewAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

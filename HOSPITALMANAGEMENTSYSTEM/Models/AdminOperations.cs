@@ -10,6 +10,10 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
     public class AdminOperations
     {
         List<Specializations> dlst = new List<Specializations>();
+        List<Doctors> slst = new List<Doctors>();
+        List<Patients> plst = new List<Patients>();
+
+
         SqlConnection con = null;
         public AdminOperations()
         {
@@ -61,7 +65,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 //create table Doctors(DoctId varchar(5) primary key,DoctName varchar(20),Gender varchar(10),Address varchar(50),phonenumber char(10),
                 //age int, spclId int , foreign key(spclId) references Specialization, role varchar(10),email varchar(30),password varchar(10))
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Doctors(DoctId,DoctName,Gender,Address,phonenumber,age,spclId,role,email,password)values(@did ,@dname, @gen, @add, @pno, @age ,@sid ,@role,@em, @pwd)", con);
+                SqlCommand cmd = new SqlCommand("insert into Doctors(DoctId,DoctName,Gender,Address,phonenumber,age,spclId,email,password)values(@did ,@dname, @gen, @add, @pno, @age ,@sid ,@em, @pwd)", con);
                 cmd.Parameters.AddWithValue("@did", d.DoctId);
                 cmd.Parameters.AddWithValue("@dname", d.DoctName);
                 cmd.Parameters.AddWithValue("@gen", d.Gender);
@@ -69,7 +73,6 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 cmd.Parameters.AddWithValue("@pno", d.phonenumber);
                 cmd.Parameters.AddWithValue("@age", d.age);
                 cmd.Parameters.AddWithValue("@sid", d.spclId);
-                cmd.Parameters.AddWithValue("@role", d.role);
                 cmd.Parameters.AddWithValue("@em", d.email);
                 cmd.Parameters.AddWithValue("@pwd", d.password);
                 cmd.ExecuteNonQuery();
@@ -115,6 +118,66 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             SqlDataAdapter adpt = new SqlDataAdapter("select * from Patients", con);
             DataSet ds = new DataSet();
             adpt.Fill(ds, "pat");
+            return ds;
+        }
+        public IEnumerable<Doctors> GetDocData()
+        {
+            SqlDataAdapter data = new SqlDataAdapter("Select * from Doctors ", con);
+            DataSet ds = new DataSet();
+            data.Fill(ds, "doc");
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Doctors s = new Doctors();
+                s.DoctId = (ds.Tables[0].Rows[i]["DoctId"].ToString());
+                s.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                slst.Add(s);
+            }
+            return slst;
+        }
+        public IEnumerable<Patients> GetPatData()
+        {
+            SqlDataAdapter data = new SqlDataAdapter("Select * from Patients ", con);
+            DataSet ds = new DataSet();
+            data.Fill(ds, "pat");
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                Patients s = new Patients();
+                s.PatId = (ds.Tables[0].Rows[i]["PatId"].ToString());
+                s.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                plst.Add(s);
+            }
+            return plst;
+        }
+        public bool AddAppointment(Appointments a)
+        {
+            bool b = false;
+            try 
+            {
+                //create table Appointments(AppointmentId varchar(10) primary key, PatId varchar(5),foreign key(PatId) references Patients,DoctId varchar(5),foreign key(DoctId) references Doctors,
+                //disease varchar(50),AppDate date)
+                con.Open();
+                SqlCommand cmd = new SqlCommand("insert into Appointments (AppointmentId, PatId, DoctId, disease, AppDate, AppTime ) values (@aid, @pid, @did, @dis, @adt, @atm)", con);
+                cmd.Parameters.AddWithValue("@aid", a.AppointmentId);
+                cmd.Parameters.AddWithValue("@pid", a.PatId);
+                cmd.Parameters.AddWithValue("@did", a.DoctId);
+                cmd.Parameters.AddWithValue("@dis", a.disease);
+                cmd.Parameters.AddWithValue("@adt", a.Date);
+                cmd.Parameters.AddWithValue("@atm", a.AppTime);
+                cmd.ExecuteNonQuery();
+                b = true;
+            }
+            catch(Exception ex) 
+            {
+                b = false;
+            }
+            
+            return b;
+        }
+        public DataSet ViewAppointment()
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Appointments", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "apt");
             return ds;
         }
     }
