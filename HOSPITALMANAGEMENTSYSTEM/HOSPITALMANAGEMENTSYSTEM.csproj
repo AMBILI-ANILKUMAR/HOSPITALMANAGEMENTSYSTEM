@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Models\AdminOperations.cs" />
     <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\DoctorOperations.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Patients.cs" />
@@ -208,10 +209,14 @@
     <Content Include="Views\Admin\Appointment.cshtml" />
     <Content Include="Views\Admin\DoctorSpecialization.cshtml" />
     <Content Include="Views\Admin\ViewAppointment.cshtml" />
+    <Content Include="Views\Doctor\DoctorMaster.cshtml" />
+    <Content Include="Views\Doctor\DoctorHome.cshtml" />
+    <Content Include="Views\Doctor\Appointments.cshtml" />
+    <Content Include="Views\Doctor\Prescription.cshtml" />
+    <Content Include="Views\Doctor\AddPrescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Doctor\" />
     <Folder Include="Views\Patient\" />
   </ItemGroup>
   <ItemGroup>

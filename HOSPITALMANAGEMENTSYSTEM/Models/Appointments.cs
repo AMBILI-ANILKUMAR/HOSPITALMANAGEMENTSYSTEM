@@ -32,8 +32,11 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         public string AppTime { get; set; }
         [Required(ErrorMessage = "Specialization is required")]
         public int spclId { get; set; }
-        [Required(ErrorMessage = "Appointment Id is required")]
+        [Required(ErrorMessage = "Diagnosis  is required")]
         public string diagnosis { get; set; }
+        [Required(ErrorMessage = "Medicine  is required")]
+        public string medicine { get; set; }
+
         [Required(ErrorMessage = "Patient Name is required")]
         [NotMapped]
         public SelectList PatDropdown { get; set; }

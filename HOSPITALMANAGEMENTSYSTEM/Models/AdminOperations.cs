@@ -67,7 +67,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into Doctors(DoctId,DoctName,Gender,Address,phonenumber,age,spclId,email,password)values(@did ,@dname, @gen, @add, @pno, @age ,@sid ,@em, @pwd)", con);
                 cmd.Parameters.AddWithValue("@did", d.DoctId);
-                cmd.Parameters.AddWithValue("@dname", d.DoctName);
+                cmd.Parameters.AddWithValue("@dname", d.DoctName.ToUpper());
                 cmd.Parameters.AddWithValue("@gen", d.Gender);
                 cmd.Parameters.AddWithValue("@add", d.Address);
                 cmd.Parameters.AddWithValue("@pno", d.phonenumber);

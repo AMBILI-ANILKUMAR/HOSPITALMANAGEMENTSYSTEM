@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 using System.Web.Mvc;
 using HOSPITALMANAGEMENTSYSTEM.Models;
 namespace HOSPITALMANAGEMENTSYSTEM.Controllers
 {
     public class HomePageController : Controller
     {
+        DoctorOperations dop = new DoctorOperations();
         // GET: HomePage
         public ActionResult Home()
         {
@@ -48,6 +50,20 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         [HttpPost]
         public ActionResult DoctorLogin(Login l)
         {
+            DataSet ds = dop.logincheck(l.Username, l.Password);
+            if ((ds.Tables["doc"].Rows.Count == 1))
+            {
+
+                Session["name"] = ds.Tables["doc"].Rows[0]["DoctName"].ToString();
+                Session["Email"] = ds.Tables["doc"].Rows[0]["email"].ToString();
+                Session["Password"] = ds.Tables["doc"].Rows[0]["password"].ToString();
+                Session["id"] = ds.Tables["doc"].Rows[0]["DoctId"].ToString();
+                return RedirectToAction("DoctorHome", "Doctor");
+            }
+            else
+            {
+                ViewBag.info = "Please Check the credentials";
+            }
             return View();
         }
         public ActionResult PatientLogin()
