@@ -128,7 +128,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         }
         public IEnumerable<Doctors> GetDocData()
         {
-            SqlDataAdapter data = new SqlDataAdapter("Select * from Doctors ", con);
+            SqlDataAdapter data = new SqlDataAdapter("select * from Doctors as d inner join Specialization as s on d.spclId=s.spclId ", con);
             DataSet ds = new DataSet();
             data.Fill(ds, "doc");
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -136,6 +136,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 Doctors s = new Doctors();
                 s.DoctId = (ds.Tables[0].Rows[i]["DoctId"].ToString());
                 s.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                s.specializationName= ds.Tables[0].Rows[i]["specializationName"].ToString();
                 slst.Add(s);
             }
             return slst;
@@ -154,6 +155,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             }
             return plst;
         }
+       
         public bool AddAppointment(Appointments a)
         {
             bool b = false;
@@ -162,13 +164,14 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 //create table Appointments(AppointmentId varchar(10) primary key, PatId varchar(5),foreign key(PatId) references Patients,DoctId varchar(5),foreign key(DoctId) references Doctors,
                 //disease varchar(50),AppDate date)
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Appointments (AppointmentId, PatId, DoctId, disease, AppDate, AppTime ) values (@aid, @pid, @did, @dis, @adt, @atm)", con);
+                SqlCommand cmd = new SqlCommand("insert into Appointments (AppointmentId, PatId, DoctId, disease, AppDate, AppTime) values (@aid, @pid, @did, @dis, @adt, @atm)", con);
                 cmd.Parameters.AddWithValue("@aid", a.AppointmentId);
                 cmd.Parameters.AddWithValue("@pid", a.PatId);
                 cmd.Parameters.AddWithValue("@did", a.DoctId);
                 cmd.Parameters.AddWithValue("@dis", a.disease);
                 cmd.Parameters.AddWithValue("@adt", a.Date);
                 cmd.Parameters.AddWithValue("@atm", a.AppTime);
+
                 cmd.ExecuteNonQuery();
                 b = true;
             }

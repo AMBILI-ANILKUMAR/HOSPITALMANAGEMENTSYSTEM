@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Appointments>
 
 @{
-    ViewBag.Title = "Appointments";
+    ViewBag.Title = "Patient";
     Layout = "~/Views/Doctor/DoctorMaster.cshtml";
 }
-
-
 
 @if (!Model.Any())
 {
@@ -15,10 +13,10 @@ else
 {
     <center>
         <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
-            <h1 class="text-dark">PATIENTS</h1>
+            <h1 class="text-dark">APPOINTMENTS</h1>
 
         </div>
-        <table style="width:100%;" class="table table-bordered  table-hover">
+        <table style="width:100%;" class="table  table-hover">
             <thead>
                 <tr>
                     <th>
@@ -30,22 +28,19 @@ else
                     <th>
                         DISEASE
                     </th>
-
                     <th>
-                        ADDRESS
-                    </th>
-                    <th>
-                        PHONE NUMBER
-                    </th>
-                    <th>
-                        AGE
-                    </th>
-                    <th>
-                        BLOOD GROUP
+                        APPOINTMENT TIME
                     </th>
                     <th>
                         APPOINTMENT DATE
                     </th>
+                    <th>
+                        DIAGNOSIS
+                    </th>
+                    <th>
+                        MEDICINE
+                    </th>
+
 
                     <th>PRESCRIPTION</th>
 
@@ -66,23 +61,22 @@ else
                         @Html.DisplayFor(modelItem => item.disease)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.phonenumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.age)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.bloodgrp)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.AppTime)
                     </td>
 
                     <td>
-                        @Html.ActionLink(" ", "Prescription", new { id = item.AppointmentId }, new { @class = "bi-file-earmark-ppt-fill", @style = "font-size:24px;margin-left:5px;color:black" })
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diagnosis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.medicine)
+                    </td>
+
+
+                    <td>
+                        @Html.ActionLink(" ", "AddPrescription", new { id = item.AppointmentId }, new { @class = "bi-file-earmark-ppt-fill", @style = "font-size:24px;margin-left:20px;color:black" })
                     </td>
 
                 </tr>
@@ -92,19 +86,3 @@ else
     </center>
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

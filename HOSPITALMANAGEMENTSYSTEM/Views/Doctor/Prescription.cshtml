@@ -21,76 +21,78 @@
 }
 else
 {
-    <center>
-        <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
-            <h1 class="text-dark">PRESCRIPTION</h1>
+<center>
+    <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+        <h1 class="text-dark">PRESCRIPTION</h1>
 
-        </div>
-        <table style="width:100%;" class="table  table-hover">
-            <thead>
+    </div>
+    <table style="width:100%;" class="table  table-hover">
+        <thead>
+            <tr>
+                <th>
+                    APPOINTMENT ID
+                </th>
+                <th>
+                    PATIENT NAME
+                </th>
+                <th>
+                    DISEASE
+                </th>
+                <th>
+                    DATE
+                </th>
+                <th>
+                    TIME
+                </th>
+
+                <th>
+                    DIAGNOSIS
+                </th>
+                <th>
+                    MEDICINE
+                </th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        APPOINTMENT ID
-                    </th>
-                    <th>
-                        PATIENT NAME
-                    </th>
-                    <th>
-                        DISEASE
-                    </th>
-                    <th>
-                        DATE
-                    </th>
-                    <th>
-                        TIME
-                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentId)
+                    </td>
 
-                    <th>
-                        DIAGNOSIS
-                    </th>
-                    <th>
-                        MEDICINE
-                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatName)
+                    </td>
 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.disease)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diagnosis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.medicine)
+                    </td>
 
                 </tr>
 
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AppointmentId)
-                        </td>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("BACK", "Appointments", "Doctor", new { @class = "btn btn-dark" })
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PatName)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.disease)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AppTime)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.diagnosis)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.medicine)
-                        </td>
-
-                    </tr>
-                    
-                }
-            </tbody>
-        </table>
-    </center>
+</center>
 }
 
 

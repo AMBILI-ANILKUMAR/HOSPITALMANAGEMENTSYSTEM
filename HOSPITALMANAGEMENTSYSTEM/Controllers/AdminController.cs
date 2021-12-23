@@ -189,7 +189,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         public ActionResult AddAppointments()
         {
             Appointments a = new Appointments();
-            a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+            a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname");
             a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
             return View(a);
         }

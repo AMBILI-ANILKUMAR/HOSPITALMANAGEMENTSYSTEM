@@ -134,6 +134,7 @@
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Specializations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,6 +214,8 @@
     <Content Include="Views\Doctor\DoctorHome.cshtml" />
     <Content Include="Views\Doctor\Appointments.cshtml" />
     <Content Include="Views\Doctor\Prescription.cshtml" />
+    <Content Include="Views\Doctor\PatientInfo.cshtml" />
+    <Content Include="Views\Doctor\Patient.cshtml" />
     <Content Include="Views\Doctor\AddPrescription.cshtml" />
   </ItemGroup>
   <ItemGroup>

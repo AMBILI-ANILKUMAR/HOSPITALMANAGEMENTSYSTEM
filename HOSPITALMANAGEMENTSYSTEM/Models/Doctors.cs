@@ -33,6 +33,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         [Required(ErrorMessage = "Specialization is required")]
         [NotMapped]
         public SelectList SpclDropdown { get; set; }
+        public string fullName { get { return DoctName + " (" + specializationName + " )"; } }
         
     }
     public enum gen

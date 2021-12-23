@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace HOSPITALMANAGEMENTSYSTEM.Models
 {
-    public class Appointments
+    public class Prescription
     {
         [Required(ErrorMessage = "Appointment Id is required")]
 
@@ -40,7 +40,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         public string disease { get; set; }
         [Required(ErrorMessage = "Date is required")]
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")] 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
         [Required(ErrorMessage = "Time is required")]
         public string AppTime { get; set; }
@@ -59,15 +59,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         public SelectList DocDropdown { get; set; }
         [NotMapped]
         public SelectList ApIDDropdown { get; set; }
-        [NotMapped]
-        public SelectList SpclDropdown { get; set; }
     }
-    public enum apointtym
-    {
+    
 
-        [Display(Name = "9AM - 12PM")] nineamto12pm,
-        [Display(Name = "2PM - 4PM")] twopmto4pm,
-        [Display(Name = "5PM - 6PM")] fivepmto6pm,
-
-    }
 }
