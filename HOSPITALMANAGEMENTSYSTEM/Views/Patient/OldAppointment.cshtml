@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Appointments>
+
+@{
+    ViewBag.Title = "OldAppointment";
+    Layout = "~/Views/Patient/PatientMaster.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            APPOINTMENT ID
+        </th>
+        <th>
+            DOCTOR NAME
+        </th>
+        <th>
+            DISEASE
+        </th>
+
+        
+        <th>
+            APPOINTMENT DATE
+        </th>
+        <th>TIME</th>
+        <th>PRESCRIPTION</th>
+
+    </tr>
+    
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.disease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppTime)
+            </td>
+            
+            <td>
+                @Html.ActionLink(" ", "Prescription", new { id = item.AppointmentId }, new { @class = "bi-file-earmark-ppt-fill", @style = "font-size:24px;margin-left:5px;color:black" })
+            </td>
+        </tr>
+    }
+
+</table>

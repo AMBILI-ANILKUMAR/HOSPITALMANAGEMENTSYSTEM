@@ -101,7 +101,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into Patients(PatId,PatName,Gender,Address,phonenumber,age,bloodgrp,email,password)values(@pid ,@pname, @gen, @add, @pno, @age ,@bgrp ,@em, @pwd)", con);
                 cmd.Parameters.AddWithValue("@pid", p.PatId);
-                cmd.Parameters.AddWithValue("@pname", p.PatName);
+                cmd.Parameters.AddWithValue("@pname", p.PatName.ToUpper());
                 cmd.Parameters.AddWithValue("@gen", p.Gender);
                 cmd.Parameters.AddWithValue("@add", p.Address);
                 cmd.Parameters.AddWithValue("@pno", p.phonenumber);

@@ -130,9 +130,12 @@
     </Compile>
     <Compile Include="Models\AdminOperations.cs" />
     <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\DoctorDemo.cs" />
     <Compile Include="Models\DoctorOperations.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\PatientDemo.cs" />
+    <Compile Include="Models\PatientOperations.cs" />
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Specializations.cs" />
@@ -161,6 +164,8 @@
     <Content Include="images\icon3.png" />
     <Content Include="images\instagram.png" />
     <Content Include="images\patient-icon.png" />
+    <Content Include="images\User-icon.png" />
+    <Content Include="images\Users-Name-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -217,10 +222,20 @@
     <Content Include="Views\Doctor\PatientInfo.cshtml" />
     <Content Include="Views\Doctor\Patient.cshtml" />
     <Content Include="Views\Doctor\AddPrescription.cshtml" />
+    <Content Include="Views\Doctor\EditProfile.cshtml" />
+    <Content Include="Views\Doctor\ProfileView.cshtml" />
+    <Content Include="Views\Patient\PatientMaster.cshtml" />
+    <Content Include="Views\Patient\PatientHome.cshtml" />
+    <Content Include="Views\Patient\ProfileView.cshtml" />
+    <Content Include="Views\Patient\Doctors.cshtml" />
+    <Content Include="Views\Patient\EditPatient.cshtml" />
+    <Content Include="Views\Patient\Appointments.cshtml" />
+    <Content Include="Views\Patient\UpcomingAppointment.cshtml" />
+    <Content Include="Views\Patient\OldAppointment.cshtml" />
+    <Content Include="Views\Patient\Prescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Patient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

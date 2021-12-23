@@ -1,36 +1,27 @@
-﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Patients
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.PatientDemo
 @using HOSPITALMANAGEMENTSYSTEM.Models
 @{
-    ViewBag.Title = "AddPatient";
-    Layout = "~/Views/Admin/AdminMaster.cshtml";
+    ViewBag.Title = "EditPatient";
+    Layout = "~/Views/Patient/PatientMaster.cshtml";
 }
+@using (Html.BeginForm("EditPatient", "Patient", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>addpatientview</title>
-</head>
-<body>
-   @using (Html.BeginForm("AddPatient", "Admin", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
     <center>
-        <div class="card" style="width: 80%; margin-top: 20px; ">
-            <div style=" background-color: rgba(128,128,128,0.2);height:50PX">
-                <b style="font-size:x-large;margin-top:20PX">ADD NEW PATIENTS </b>
-            </div>
-            <div class="card-body" style="margin-top:10PX">
-                <br />
-                <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card" style="width: 80%; margin-top: 20px; ">
+                <div style=" background-color: rgba(128,128,128,0.2);height:50PX">
+                    <b style="font-size:x-large;margin-top:20PX">Edit Profile</b>
+                </div>
+                <div class="card-body">
                     <div class="col-md-12">
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <br />
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <b>PATIENT ID</b>
+                                        <b>PATIENT ID</b><br />
                                         @Html.EditorFor(model => model.PatId, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.PatId, "", new { @class = "text-danger" })
                                     </div>
@@ -40,19 +31,21 @@
                                         @Html.ValidationMessageFor(model => model.PatName, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-4">
-                                        <b>GENDER</b><br />
-                                        @Html.RadioButtonFor(e => e.Gender, "Male", new { @class = "form - check - input" })Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        @Html.RadioButtonFor(e => e.Gender, "Female", new { @class = "form - check - input" })Female
-                                       <br/> @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                        <b>BLOOD GROUP</b><br />
+                                        @Html.DropDownListFor(model => model.bloodgrp, EnumHelper.GetSelectList(typeof(bgrp)), "Select", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.bloodgrp, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <br />
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <b>BLOOD GROUP</b>
-                                        @Html.DropDownListFor(model => model.bloodgrp, EnumHelper.GetSelectList(typeof(bgrp)), "Select", new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.bloodgrp, "", new { @class = "text-danger" })
+                                        <b>GENDER</b><br />
+                                        @Html.RadioButtonFor(e => e.Gender, "Male", new { @class = "form - check - input" })Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        @Html.RadioButtonFor(e => e.Gender, "Female", new { @class = "form - check - input" })Female
+                                        <br />@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                                     </div>
+
+
                                     <div class="col-md-4">
                                         <b>AGE</b>
                                         @Html.TextBoxFor(model => model.age, new { @class = "form-control" })
@@ -66,6 +59,7 @@
                                 </div>
                                 <br />
                                 <div class="row">
+
                                     <div class="col-md-4">
                                         <b>PHONE NUMBER</b>
                                         @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control" } })
@@ -78,14 +72,14 @@
                                     </div>
                                     <div class="col-md-4">
                                         <b>PASSWORD</b>
-                                        @Html.PasswordFor(model => model.password, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.password, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <br />
                                 <div class="row">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="REGISTER" class="btn btn-dark" />
+                                    <div class="col-md-offset-2 col-md-12">
+                                        <input type="submit" value="UPDATE" class="btn btn-dark" />
                                         <p style="color:red">@ViewBag.info</p>
                                     </div>
                                 </div>
@@ -95,15 +89,6 @@
                 </div>
             </div>
         </div>
-
-
     </center>
-    }
-    </body>
-</html>
 
-
-
-
-
-
+}

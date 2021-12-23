@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace HOSPITALMANAGEMENTSYSTEM.Models
 {
-    public class Patients
+    public class PatientDemo
     {
+
         [Required(ErrorMessage = "Patient Id is required")]
         public string PatId { get; set; }
 
@@ -35,17 +35,5 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
 
         [Required(ErrorMessage = "Password is required")]
         public string password { get; set; }
-
-    }
-    public enum bgrp
-    {
-        [Display(Name = "A+")] APositive=0,
-        [Display(Name = "A-")] ANegetive=1,
-        [Display(Name = "B+")] BPositive=2,
-        [Display(Name = "B-")] BNegetive=3,
-        [Display(Name = "O+")] OPositive=4,
-        [Display(Name = "O-")] ONegetive=5,
-        [Display(Name = "AB+")] ABPositive=6,
-        [Display(Name = "AB-")] ABNegetive = 7,
     }
 }

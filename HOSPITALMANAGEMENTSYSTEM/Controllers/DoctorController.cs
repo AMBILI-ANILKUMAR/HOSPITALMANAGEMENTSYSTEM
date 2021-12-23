@@ -12,17 +12,113 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
     {
         DoctorOperations dop = new DoctorOperations();
         List<Appointments> alst = new List<Appointments>();
+        List<Doctors> prolst = new List<Doctors>();
         List<Appointments> plst = new List<Appointments>();
         List<Appointments> aplst = new List<Appointments>();
 
         // GET: Doctor
         public ActionResult DoctorHome()
         {
-            ViewBag.name = Session["name"];
-            ViewBag.id ="Employee ID:"+Session["id"];
+            string id = (string)Session["id"];
+            DataSet ds = dop.ViewProfile(id);
+            Doctors d = new Doctors();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                d.password = ds.Tables[0].Rows[i]["password"].ToString();
+            }
+            Session["Sname"] = d.DoctName;
+            ViewBag.name = Session["Sname"];
+            ViewBag.id = "Employee ID:" + Session["id"];
+            return View();
+
+            
+        }
+        public ActionResult ProfileView()
+        {
+            string id = (string)Session["id"];
+            DataSet ds = dop.ViewProfile(id);
+            Doctors d = new Doctors();
+            if ((ds.Tables["apt"].Rows.Count > 0))
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                    d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                    d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                    d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                    d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                    d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                    d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                    d.password = ds.Tables[0].Rows[i]["password"].ToString();
+                }
+                Session["Sname"] = d.DoctName;
+                ViewBag.name = Session["Sname"];
+                ViewBag.id = "Employee ID:" + Session["id"];
+                return View(d);
+
+            }
+            else
+            {
+                ViewBag.info = "Not Yet!";
+                ViewBag.name = Session["name"];
+                ViewBag.id = "Employee ID:" + Session["id"];
+                return View(d);
+            }
+        }
+        public ActionResult EditProfile(string id)
+        {
+            DoctorDemo d = new DoctorDemo();
+            DataSet ds = dop.ViewProfile(id);
+            if ((ds.Tables["apt"].Rows.Count > 0))
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    d.spclId = int.Parse(ds.Tables[0].Rows[i]["spclId"].ToString());
+                    d.DoctId = ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    d.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                    d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                    d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
+                    d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                    d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                    d.specializationName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                    d.email = ds.Tables[0].Rows[i]["email"].ToString();
+                    d.password = ds.Tables[0].Rows[i]["password"].ToString();
+                }
+                d.SpclDropdown = new SelectList(dop.GetSpclData(), "spclId", "specializationName",d.spclId);
+                ViewBag.name = Session["Sname"];
+                ViewBag.id = "Employee ID:" + Session["id"];
+                return View(d);
+
+            }
+            else
+            {
+                ViewBag.info = "Not Yet!";
+                d.SpclDropdown = new SelectList(dop.GetSpclData(), "spclId", "specializationName");
+                ViewBag.name = Session["Sname"];
+                ViewBag.id = "Employee ID:" + Session["id"];
+                return View(d);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditProfile(string id,DoctorDemo d)
+        {
+            bool b = dop.EditProfile(id, d);
+            if (b == true)
+                return RedirectToAction("ProfileView");
+            d.SpclDropdown = new SelectList(dop.GetSpclData(), "spclId", "specializationName");
+            ViewBag.name = Session["Sname"];
+            ViewBag.id = "Employee ID:" + Session["id"];
             return View();
         }
-        
         public ActionResult Appointments()
         {
             string id = (string)Session["id"];
@@ -47,7 +143,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     d.medicine = (ds.Tables[0].Rows[i]["medicine"].ToString());
                     alst.Add(d);
                 }
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(alst);
 
@@ -55,7 +151,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             else
             {
                 ViewBag.info = "No Patients consulted Yet!";
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(alst);
             }
@@ -68,7 +164,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             {
 
                 ViewBag.info = "No Prescription Yet!";
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(plst);
 
@@ -88,14 +184,14 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     d.medicine = ds.Tables[0].Rows[i]["medicine"].ToString();
                     plst.Add(d);
                 }
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(plst);
             }
         }
         public ActionResult AddPrescription(string id)
         {
-            ViewBag.name = Session["name"];
+            ViewBag.name = Session["Sname"];
             ViewBag.id = "Employee ID:" + Session["id"];
             string did = (string)Session["id"];
             DataSet ds = dop.ViewPrescription(did, id);
@@ -122,7 +218,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             else
             {
                 ViewBag.info = "No Prescription Added Yet!";
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(d);
             }
@@ -153,14 +249,14 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     d.medicine = ds.Tables[0].Rows[i]["medicine"].ToString();
                     aplst.Add(d);
                 }
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(aplst);
             }
             else
             {
                 ViewBag.info = "No Appointments Currently assigned!";
-                ViewBag.name = Session["name"];
+                ViewBag.name = Session["Sname"];
                 ViewBag.id = "Employee ID:" + Session["id"];
                 return View(aplst);
             }
