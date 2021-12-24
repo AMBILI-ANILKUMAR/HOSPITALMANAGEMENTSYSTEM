@@ -229,7 +229,6 @@
     <Content Include="Views\Patient\ProfileView.cshtml" />
     <Content Include="Views\Patient\Doctors.cshtml" />
     <Content Include="Views\Patient\EditPatient.cshtml" />
-    <Content Include="Views\Patient\Appointments.cshtml" />
     <Content Include="Views\Patient\UpcomingAppointment.cshtml" />
     <Content Include="Views\Patient\OldAppointment.cshtml" />
     <Content Include="Views\Patient\Prescription.cshtml" />

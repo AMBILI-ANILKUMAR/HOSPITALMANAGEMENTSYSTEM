@@ -70,7 +70,7 @@
             background: #6d7fcc;
         }
 
-        ul.CTAs {
+        /*ul.CTAs {
             padding: 20px;
         }
 
@@ -87,7 +87,7 @@
         a.article:hover {
             background: #6d7fcc !important;
             color: #fff !important;
-        }
+        }*/
     </style>
 </head>
 <body>
@@ -151,7 +151,11 @@
 
                     </li>
                     <li>
-                        @Html.ActionLink(" APPOINTMENTS", "Appointments", "Patient", new { @class = "nav-link active bi-calendar-plus-fill", @style = "color:black;font-size:20px;" })
+                        @Html.ActionLink(" APPOINTMENTS", "UpcomingAppointment", "Patient", new { @class = "nav-link active bi-calendar-plus-fill", @style = "color:black;font-size:20px;" })
+
+                    </li>
+                    <li>
+                        @Html.ActionLink(" PRESCRIPTIONS", "OldAppointment", "Patient", new { @class = "nav-link active bi-file-earmark-ppt-fill", @style = "color:black;font-size:20px;" })
 
                     </li>
 
