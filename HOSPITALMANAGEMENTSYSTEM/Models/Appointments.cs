@@ -57,8 +57,12 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         [Required(ErrorMessage = "Doctor Name is required")]
         [NotMapped]
         public SelectList DocDropdown { get; set; }
+        [Required(ErrorMessage = "Appointment is required")]
+
         [NotMapped]
         public SelectList ApIDDropdown { get; set; }
+        [Required(ErrorMessage = "Specialization is required")]
+
         [NotMapped]
         public SelectList SpclDropdown { get; set; }
     }
