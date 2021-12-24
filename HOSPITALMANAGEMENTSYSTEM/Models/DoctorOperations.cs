@@ -67,7 +67,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             bool b = false;
             try
             {
-                SqlDataAdapter adpt = new SqlDataAdapter("update Doctors set DoctName='" + d.DoctName.ToUpper() + "',Address='" + d.Address + "',phonenumber='"+d.phonenumber+ "',age='"+d.age+ "',email='"+d.email+ "',password='"+d.password+ "' where DoctId='" + d.DoctId + "'", con);
+                SqlDataAdapter adpt = new SqlDataAdapter("update Doctors set DoctName='" + d.DoctName + "',Address='" + d.Address + "',phonenumber='"+d.phonenumber+ "',age='"+d.age+ "',email='"+d.email+ "',password='"+d.password+ "' where DoctId='" + d.DoctId + "'", con);
                 DataSet ds = new DataSet();
                 adpt.Fill(ds, "apt");
                 b = true;
@@ -206,6 +206,20 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             }
 
             return b;
+        }
+        public DataSet EditPrescription(string id, string aid)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlDataAdapter adpt = new SqlDataAdapter("select a.AppointmentId,p.PatName,p.Gender,p.phonenumber,p.age,p.bloodgrp,a.disease,a.Apptime,a.Appdate,a.diagnosis,a.medicine from Appointments as a inner join Doctors as d on a.DoctId=d.DoctId inner join Patients as p on a.PatId=p.PatId  where a.DoctId='" + id + "' and a.AppointmentId='" + aid + "' and a.flag=1", con);
+                adpt.Fill(ds, "apt");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return ds;
         }
         public IEnumerable<Appointments> GetAPIDData()
         {

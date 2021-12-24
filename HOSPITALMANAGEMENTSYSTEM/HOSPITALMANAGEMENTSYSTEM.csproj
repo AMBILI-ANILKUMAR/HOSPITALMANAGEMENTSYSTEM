@@ -232,6 +232,7 @@
     <Content Include="Views\Patient\UpcomingAppointment.cshtml" />
     <Content Include="Views\Patient\OldAppointment.cshtml" />
     <Content Include="Views\Patient\Prescription.cshtml" />
+    <Content Include="Views\Doctor\EditPrescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

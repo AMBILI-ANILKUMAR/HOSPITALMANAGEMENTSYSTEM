@@ -231,6 +231,48 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 return RedirectToAction("Patient");
             return View();
         }
+        public ActionResult EditPrescription(string id)
+        {
+            ViewBag.name = Session["Sname"];
+            ViewBag.id = "Employee ID:" + Session["id"];
+            string did = (string)Session["id"];
+            DataSet ds = dop.EditPrescription(did, id);
+            Prescription d = new Prescription();
+            if ((ds.Tables["apt"].Rows.Count > 0))
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    d.AppointmentId = ds.Tables[0].Rows[i]["AppointmentId"].ToString();
+                    d.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                    d.Gender = ds.Tables[0].Rows[i]["Gender"].ToString();
+                    d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
+                    d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
+                    d.bloodgrp = ds.Tables[0].Rows[i]["bloodgrp"].ToString();
+                    d.disease = ds.Tables[0].Rows[i]["disease"].ToString();
+                    d.Date = DateTime.Parse(ds.Tables[0].Rows[i]["AppDate"].ToString());
+                    d.AppTime = (ds.Tables[0].Rows[i]["AppTime"].ToString());
+                    d.diagnosis = ds.Tables[0].Rows[i]["diagnosis"].ToString();
+                    d.medicine = ds.Tables[0].Rows[i]["medicine"].ToString();
+
+                }
+                return View(d);
+            }
+            else
+            {
+                ViewBag.info = "No Prescription Added Yet!";
+                ViewBag.name = Session["Sname"];
+                ViewBag.id = "Employee ID:" + Session["id"];
+                return View(d);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditPrescription(string id, Prescription p)
+        {
+            bool b = dop.Edit(id, p);
+            if (b == true)
+                return RedirectToAction("Appointments");
+            return View();
+        }
         public ActionResult Patient()
         {
             string did = (string)Session["id"];

@@ -61,13 +61,11 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         {
             bool b = false;
             try
-            {
-                //create table Doctors(DoctId varchar(5) primary key,DoctName varchar(20),Gender varchar(10),Address varchar(50),phonenumber char(10),
-                //age int, spclId int , foreign key(spclId) references Specialization, role varchar(10),email varchar(30),password varchar(10))
+            {            
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into Doctors(DoctId,DoctName,Gender,Address,phonenumber,age,spclId,email,password)values(@did ,@dname, @gen, @add, @pno, @age ,@sid ,@em, @pwd)", con);
                 cmd.Parameters.AddWithValue("@did", d.DoctId);
-                cmd.Parameters.AddWithValue("@dname", d.DoctName.ToUpper());
+                cmd.Parameters.AddWithValue("@dname", d.DoctName);
                 cmd.Parameters.AddWithValue("@gen", d.Gender);
                 cmd.Parameters.AddWithValue("@add", d.Address);
                 cmd.Parameters.AddWithValue("@pno", d.phonenumber);
@@ -101,7 +99,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into Patients(PatId,PatName,Gender,Address,phonenumber,age,bloodgrp,email,password)values(@pid ,@pname, @gen, @add, @pno, @age ,@bgrp ,@em, @pwd)", con);
                 cmd.Parameters.AddWithValue("@pid", p.PatId);
-                cmd.Parameters.AddWithValue("@pname", p.PatName.ToUpper());
+                cmd.Parameters.AddWithValue("@pname", p.PatName);
                 cmd.Parameters.AddWithValue("@gen", p.Gender);
                 cmd.Parameters.AddWithValue("@add", p.Address);
                 cmd.Parameters.AddWithValue("@pno", p.phonenumber);
@@ -189,5 +187,44 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             adpt.Fill(ds, "apt");
             return ds;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

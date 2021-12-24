@@ -49,7 +49,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             bool b = false;
             try
             {
-                SqlDataAdapter adpt = new SqlDataAdapter("update Patients set PatName='" + d.PatName.ToUpper() + "',Address='" + d.Address + "',bloodgrp='" +d.bloodgrp+ "',phonenumber='" + d.phonenumber + "',age='" + d.age + "',email='" + d.email + "',password='" + d.password + "' where PatId='" + d.PatId + "'", con);
+                SqlDataAdapter adpt = new SqlDataAdapter("update Patients set PatName='" + d.PatName + "',Address='" + d.Address + "',bloodgrp='" +d.bloodgrp+ "',phonenumber='" + d.phonenumber + "',age='" + d.age + "',email='" + d.email + "',password='" + d.password + "' where PatId='" + d.PatId + "'", con);
                 DataSet ds = new DataSet();
                 adpt.Fill(ds, "apt");
                 b = true;
@@ -64,7 +64,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         {
             Patients a = new Patients();
             a.PatId = id;
-            a.PatName = p.PatName.ToUpper();
+            a.PatName = p.PatName;
             a.Address = p.Address;
             a.bloodgrp = p.bloodgrp;
             a.phonenumber = p.phonenumber;

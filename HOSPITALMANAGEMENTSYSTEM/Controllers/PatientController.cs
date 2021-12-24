@@ -219,7 +219,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             }
             else
             {
-                ViewBag.info = "No Appointments Currently assigned!";
+                ViewBag.info = "No Appointments Currently Assigned!";
                 ViewBag.name = Session["Pname"];
                 ViewBag.id = "ID:" + Session["id"];
                 return View(aplst);
@@ -256,7 +256,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                 }
                 else
                 {
-                    ViewBag.info = "No Patients consulted Yet!";
+                    ViewBag.info = "No Prescription Added Yet!!";
                     ViewBag.name = Session["Pname"];
                     ViewBag.id = "ID:" + Session["id"];
                     return View(alst);

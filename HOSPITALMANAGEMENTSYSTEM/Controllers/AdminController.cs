@@ -206,7 +206,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             bool b = aop.AddAppointment(a);
             if(b==true)
             {
-                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname");
                 a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
                 ViewBag.info = "Added Successfully";
                 return RedirectToAction("ViewAppointment");
@@ -214,7 +214,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
             }
             else
             {
-                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "DoctName");
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname");
                 a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
                 ViewBag.info = "Not Added";
 
