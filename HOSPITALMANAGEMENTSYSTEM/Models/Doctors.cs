@@ -21,7 +21,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         public string phonenumber { get; set; }
         [Required(ErrorMessage = "Age is required")]
         public int age { get; set; }
-        [Required(ErrorMessage = "Specialization Id is required")]
+        [Required(ErrorMessage = "Specialization is required")]
         public int spclId { get; set; }
         [Required(ErrorMessage = "Specialization Name is required")]
         public string specializationName { get; set; }

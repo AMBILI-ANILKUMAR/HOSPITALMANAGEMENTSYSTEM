@@ -1,4 +1,6 @@
-﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Specializations>
+﻿@using PagedList.Mvc
+
+@model  PagedList.IPagedList<HOSPITALMANAGEMENTSYSTEM.Models.Specializations>
 
 @{
     ViewBag.Title = "ViewSpecialization";
@@ -47,7 +49,13 @@
         </tbody>
 
     </table>
-
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 450px">
+              @Html.PagedListPager(Model, page => Url.Action("ViewSpecialization", new { page }))
+        </div>
+    </div>
 </center>
 
 

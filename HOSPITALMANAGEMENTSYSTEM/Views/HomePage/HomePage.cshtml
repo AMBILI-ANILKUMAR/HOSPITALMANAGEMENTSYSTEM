@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/HomePage/HomeMaster.cshtml";
+}
+
+
+<section class="home" id="home">
+
+    <div class="container">
+
+        <div class="row min-vh-100 align-items-center text-center text-md-left">
+
+            <div class="col-md-6 pr-md-5" >
+                <img src="~/images/Doctors-bros.svg" width="100%" alt="">
+            </div>
+            <div class="col-md-6 pl-md-5 content" data-aos="fade-left">
+                <h1 ><span>R</span>AJAGIRI <span>H</span>OSPITAL</h1>
+                @*<h1><span>stay</span> safe, <span>stay</span> healthy.</h1>*@
+                <h3>caring for you.</h3>
+                <a href="/HomePage/About" class="btn btn-primary button" >LEARN MORE</a>
+                @*<button class="button">learn more</button>*@
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- home section ends -->
+<!-- about section start  -->
+<!-- about section ends -->
+<!-- facility section starts  -->
+<!-- facility section ends -->
+<!-- review section starts  -->
+<!-- review section ends  -->
+<!-- counter section starts  -->
+<!-- counter section ends -->
+<!-- contact section starts  -->
+@*<section class="contact" id="contact">
+
+        <div class="container" style="margin-bottom: 50PX;  ">
+
+            <div class="row justify-content-center">
+
+                <div class="container-fluid">
+                    <h1 class="heading"><span>'</span> LOGIN HERE<span>'</span> </h1>
+                    <div class="col-md-8" style="margin-left:300px;margin-top:50px">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        @Html.ActionLink(" ", "AdminLogin", "HomePage", new { @style = "background:url('/images/Admin-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 140px" })
+                                        <br /><h4 style="margin-left: 25px"><b>ADMIN</b></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.ActionLink(" ", "DoctorLogin", "HomePage", new { @style = "background:url('/images/Doctor-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 145px" })
+                                        <br /><h4 style="margin-left: 25px"><b>DOCTOR</b></h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.ActionLink(" ", "PatientLogin", "HomePage", new { @style = "background:url('/images/patient-icon.png') no-repeat ;background-size: cover; display:block; height: 125px; width: 140px" })
+                                        <br /><h4 style="margin-left: 25px"><b>PATIENT</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>*@
+
+<!-- contact section ends -->
+<!-- post section starts  -->
+@*<section class="post" id="post">
+
+        <div class="container min-vh-100">
+
+            <h1 class="heading"><span>'</span> out posts <span>'</span></h1>
+
+            <div class="box-container">
+
+                <div class="box" data-aos="fade-right">
+                    <img src="images/img2.jpg" alt="">
+                    <div class="content">
+                        <span>jan 5, 2021</span>
+                        <a href="#"><h3>post title goes here</h3></a>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ex porro libero at veniam molestias facere quo necessitatibus ipsum ad?</p>
+                        <a href="#"><button class="button">learn more</button></a>
+                    </div>
+                </div>
+
+                <div class="box" data-aos="fade-up">
+                    <img src="images/img4.jpg" alt="">
+                    <div class="content">
+                        <span>jan 5, 2021</span>
+                        <a href="#"><h3>post title goes here</h3></a>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ex porro libero at veniam molestias facere quo necessitatibus ipsum ad?</p>
+                        <a href="#"><button class="button">learn more</button></a>
+                    </div>
+                </div>
+
+                <div class="box" data-aos="fade-left">
+                    <img src="images/img5.jpg" alt="">
+                    <div class="content">
+                        <span>jan 5, 2021</span>
+                        <a href="#"><h3>post title goes here</h3></a>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ex porro libero at veniam molestias facere quo necessitatibus ipsum ad?</p>
+                        <a href="#"><button class="button">learn more</button></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>*@
+
+<!-- post section ends -->
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="container" style="margin-top:30px">
+
+        <div class="row">
+
+            <div class="col-md-5" data-aos="fade-right">
+                <a href="#" class="logo"><h2><span>R</span>ajagiri<span> H</span>ospital</h2></a>
+                <p>
+                    Rajagiri Hospital is one of the leading subspecialties equipped with highly trained and experienced physicians as well as more advanced technological
+                    infrastructure specializing in the treatment and care of infants, children, adolescents and adult women.
+                </p>
+            </div>
+
+            <div class="col-md-3 text-center" data-aos="fade-up">
+                <h2>links</h2>
+                <a href="#">home</a>
+                <a href="#">about</a>
+                <a href="#">facility</a>
+                <a href="#">review</a>
+            </div>
+
+            <div class="col-md-3 text-center" data-aos="fade-left">
+                <h2>share</h2>
+                <a href="#">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">github</a>
+            </div>
+
+        </div>
+
+    </div>
+    <h5 class="credit text-center mx-auto"><span>HospitalPolicy</span><i class='far fa-copyright'></i>2021 | all rights reserved.</h5>
+
+
+</section>
+

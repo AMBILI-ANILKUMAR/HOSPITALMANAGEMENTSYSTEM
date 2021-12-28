@@ -89,6 +89,54 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             adpt.Fill(ds, "doc");
             return ds;
         }
+        public DataSet ViewDoctor(string id)
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Doctors as d inner join Specialization as s on d.spclId=s.spclId where d.DoctId='"+id+"'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "doc");
+            return ds;
+        }
+        public bool UpdateDoctor(Doctors d)
+        {
+            bool b = false;
+            try
+            {
+                SqlDataAdapter adpt = new SqlDataAdapter("update Doctors set DoctName='" + d.DoctName + "',Address='" + d.Address + "',phonenumber='" + d.phonenumber + "',age='" + d.age + "',email='" + d.email + "',password='" + d.password + "' where DoctId='" + d.DoctId + "'", con);
+                DataSet ds = new DataSet();
+                adpt.Fill(ds, "apt");
+                b = true;
+            }
+            catch (Exception ex)
+            {
+                b = false;
+            }
+            return b;
+        }
+        public bool EditDoctor(string id, DoctorDemo p)
+        {
+            Doctors a = new Doctors();
+            a.DoctId = id;
+            a.DoctName = p.DoctName;
+            a.Address = p.Address;
+            a.phonenumber = p.phonenumber;
+            a.age = p.age;
+            a.email = p.email;
+            a.password = p.password;
+            bool b = UpdateDoctor(a);
+            return b;
+        }
+        public bool DeleteDoctor(string id)
+        {
+
+            bool b = false;
+            SqlDataAdapter adpt = new SqlDataAdapter("delete from Doctors where DoctId='" + id + "'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "Doc");
+            b = true;
+            return b;
+            //return RedirectToAction("ViewDoctor");
+        }
+
         public bool AddPatients(Patients p)
         {
             bool b = false;
@@ -123,6 +171,54 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             DataSet ds = new DataSet();
             adpt.Fill(ds, "pat");
             return ds;
+        }
+        public DataSet ShowPatient(string id)
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Patients where PatId='"+id+"'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "pat");
+            return ds;
+        }
+        public bool UpdatePatient(Patients d)
+        {
+            bool b = false;
+            try
+            {
+                SqlDataAdapter adpt = new SqlDataAdapter("update Patients set PatName='" + d.PatName + "',Address='" + d.Address + "',bloodgrp='" + d.bloodgrp + "',phonenumber='" + d.phonenumber + "',age='" + d.age + "',email='" + d.email + "',password='" + d.password + "' where PatId='" + d.PatId + "'", con);
+                DataSet ds = new DataSet();
+                adpt.Fill(ds, "apt");
+                b = true;
+            }
+            catch (Exception ex)
+            {
+                b = false;
+            }
+            return b;
+        }
+        public bool EditPatient(string id, PatientDemo p)
+        {
+            Patients a = new Patients();
+            a.PatId = id;
+            a.PatName = p.PatName;
+            a.Address = p.Address;
+            a.bloodgrp = p.bloodgrp;
+            a.phonenumber = p.phonenumber;
+            a.age = p.age;
+            a.email = p.email;
+            a.password = p.password;
+            bool b = UpdatePatient(a);
+            return b;
+        }
+        public bool DeletePatient(string id)
+        {
+
+            bool b = false;
+            SqlDataAdapter adpt = new SqlDataAdapter("delete from Patients where PatId='" + id + "'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "Pat");
+            b = true;
+            return b;
+            //return RedirectToAction("ViewDoctor");
         }
         public IEnumerable<Doctors> GetDocData()
         {

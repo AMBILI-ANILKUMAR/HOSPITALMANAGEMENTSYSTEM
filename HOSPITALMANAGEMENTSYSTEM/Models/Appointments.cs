@@ -13,7 +13,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         [Required(ErrorMessage = "Appointment Id is required")]
 
         public string AppointmentId { get; set; }
-        [Required(ErrorMessage = "Patient Id is required")]
+        [Required(ErrorMessage = "Patient is required")]
         public string PatId { get; set; }
         [Required(ErrorMessage = "Patient  is required")]
         public string PatName { get; set; }
@@ -32,9 +32,9 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
         [Required(ErrorMessage = "Bloodgroup must be required")]
         public string bloodgrp { get; set; }
 
-        [Required(ErrorMessage = "Doctor Id is required")]
+        [Required(ErrorMessage = "Doctor is required")]
         public string DoctId { get; set; }
-        [Required(ErrorMessage = "Doctor  is required")]
+        [Required(ErrorMessage = "Doctor  required")]
         public string DoctName { get; set; }
         [Required(ErrorMessage = "Disease is required")]
         public string disease { get; set; }

@@ -18,13 +18,13 @@
     <div style="width:100%;color:darkblue;font-weight:bold">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid" style="margin-right:100px;width:100%">
-                @Html.ActionLink("RAJAGIRI SUPER SPECIALITY HOSPITAL", "Home", "HomePage", new { @class = "navbar-brand" })
+                @Html.ActionLink("RAJAGIRI SUPER SPECIALITY HOSPITAL", "HomePage", "HomePage", new { @class = "navbar-brand" })
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav justify-content-center navbar-nav me-auto mb-2 mb-lg-2  ">
-                        <li class="nav-item" style="margin-left: 750px">
+                        <li class="nav-item" style="margin-left: 900px">
 
                             @Html.ActionLink("LOGIN", "Login", "HomePage", new { @class = "nav-link active" })
                         </li>
@@ -42,42 +42,43 @@
     @using (Html.BeginForm("DoctorLogin", "HomePage", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        <h1 style="text-align:center;margin-top:20px;">DOCTOR LOGIN</h1>
 
         <br /><br />
         <div class="container-fluid">
+            <center>
+                <h1 style="text-align:center;margin-bottom:50px;">DOCTOR LOGIN</h1>
 
-            <div class="col-md-4" style="margin-left:450px;">
-                <div class="form-horizontal">
+                <div class="col-md-4">
+                    <div class="form-horizontal">
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <b>USER NAME</b>
-                        <div class="col-md-12">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <b>USER NAME</b>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <br />
-                    <div class="form-group">
-                        <b>PASSWORD</b>
-                        <div class="col-md-12">
-                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        <br />
+                        <div class="form-group">
+                            <b>PASSWORD</b>
+                            <div class="col-md-12">
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <br />
+                        <br />
 
-                    <br />
-                    <div class="form-group">
-                        <div class="col-md-offset-12 col-md-10">
-                            <p style="color: red; margin-left: 120px">@ViewBag.info</p>
-                            <input type="submit" value="Login" class="btn btn-dark" style="width:200px;margin-left:120px" />
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-12 col-md-10">
+                                <p style="color: red; ">@ViewBag.info</p>
+                                <input type="submit" value="Login" class="btn btn-dark" style="width:200px;" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </center>
         </div>
 
     }

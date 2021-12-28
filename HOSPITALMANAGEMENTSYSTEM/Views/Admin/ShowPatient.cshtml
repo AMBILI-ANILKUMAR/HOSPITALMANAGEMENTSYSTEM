@@ -1,13 +1,16 @@
-﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Patients>
+﻿
+@using PagedList.Mvc
+
+@model  PagedList.IPagedList<HOSPITALMANAGEMENTSYSTEM.Models.Patients>
 
 @{
     ViewBag.Title = "ShowPatient";
     Layout = "~/Views/Admin/AdminMaster.cshtml";
 }
 <center>
-    
 
-    @if (!Model.Any())
+
+    @if (Model == null)
     {
         <h1 style="color: red; text-align: center; margin-top: 100px">@ViewBag.info</h1>
     }
@@ -48,45 +51,62 @@
                 <th>
                     PASSWORD
                 </th>
-
+                <th>
+                    OPERATION
+                </th>
             </tr>
 
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PatId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PatName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.phonenumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.age)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.bloodgrp)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phonenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bloodgrp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
 
-                </tr>
+                @Html.ActionLink(" ", "EditPatient", new { id = item.PatId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:5px;color:black" })
+                @Html.ActionLink(" ", "DeletePatient", new { id = item.PatId }, new { @class = "bi bi-trash-fill", @style = "font-size:24px;margin-left:25px;color:black" })
+
+            </td>
+        </tr>
             }
 
         </table>
+        if (Model.HasNextPage || Model.HasPreviousPage)
+        {
+            <div id="container" style="margin-left: 20px">
+                <p></p>
+                <p></p>
+                <div class="pagination" style="margin-left: 450px">
+                    @Html.PagedListPager(Model, page => Url.Action("ShowPatient", new { page }))
+                </div>
+            </div>
+        }
     }
 
 </center>

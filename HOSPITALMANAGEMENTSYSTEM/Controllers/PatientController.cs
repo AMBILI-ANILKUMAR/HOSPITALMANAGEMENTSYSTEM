@@ -213,7 +213,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     d.medicine = ds.Tables[0].Rows[i]["medicine"].ToString();
                     aplst.Add(d);
                 }
-                ViewBag.name = Session["Sname"];
+                ViewBag.name = Session["Pname"];
                 ViewBag.id = "ID:" + Session["id"];
                 return View(aplst);
             }

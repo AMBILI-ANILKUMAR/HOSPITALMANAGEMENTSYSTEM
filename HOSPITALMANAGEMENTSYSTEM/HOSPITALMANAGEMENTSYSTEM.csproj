@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -146,6 +152,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -153,9 +161,14 @@
     <Content Include="images\add.png" />
     <Content Include="images\Admin-icon.png" />
     <Content Include="images\adminhome.jpg" />
+    <Content Include="images\bed.jpg" />
     <Content Include="images\Doctor-icon.png" />
     <Content Include="images\doctor.png" />
+    <Content Include="images\Doctors-bro.png" />
+    <Content Include="images\Doctors-bro.svg" />
+    <Content Include="images\Doctors-bros.svg" />
     <Content Include="images\facebook.png" />
+    <Content Include="images\gmail.png" />
     <Content Include="images\google.png" />
     <Content Include="images\home5.jpg" />
     <Content Include="images\home7.jpg" />
@@ -163,7 +176,21 @@
     <Content Include="images\icon2.png" />
     <Content Include="images\icon3.png" />
     <Content Include="images\instagram.png" />
+    <Content Include="images\lady-dr.png" />
     <Content Include="images\patient-icon.png" />
+    <Content Include="images\patient.jpg" />
+    <Content Include="images\phone.png" />
+    <Content Include="images\review1.jpg" />
+    <Content Include="images\review2.jpg" />
+    <Content Include="images\review3.jpg" />
+    <Content Include="images\service1.jpg" />
+    <Content Include="images\service2.jpg" />
+    <Content Include="images\service3.jpg" />
+    <Content Include="images\service4.jpg" />
+    <Content Include="images\service5.jpg" />
+    <Content Include="images\service6.jpg" />
+    <Content Include="images\service8.jpg" />
+    <Content Include="images\time.jpg" />
     <Content Include="images\User-icon.png" />
     <Content Include="images\Users-Name-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -179,6 +206,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\HomePage\Style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -233,6 +261,13 @@
     <Content Include="Views\Patient\OldAppointment.cshtml" />
     <Content Include="Views\Patient\Prescription.cshtml" />
     <Content Include="Views\Doctor\EditPrescription.cshtml" />
+    <Content Include="Views\HomePage\HomePage.cshtml" />
+    <Content Include="Views\HomePage\AboutPage.cshtml" />
+    <Content Include="Views\HomePage\FacilityPage.cshtml" />
+    <Content Include="Views\HomePage\ReviewPage.cshtml" />
+    <Content Include="Views\Admin\EditDoctor.cshtml" />
+    <Content Include="Views\Admin\DeleteDoctor.cshtml" />
+    <Content Include="Views\Admin\EditPatient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
