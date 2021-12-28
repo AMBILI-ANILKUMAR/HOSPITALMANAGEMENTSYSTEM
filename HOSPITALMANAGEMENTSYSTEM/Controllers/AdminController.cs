@@ -271,7 +271,6 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     d.Address = ds.Tables[0].Rows[i]["Address"].ToString();
                     d.phonenumber = ds.Tables[0].Rows[i]["phonenumber"].ToString();
                     d.age = int.Parse(ds.Tables[0].Rows[i]["age"].ToString());
-
                     d.bloodgrp = ds.Tables[0].Rows[i]["bloodgrp"].ToString();
                     d.email = ds.Tables[0].Rows[i]["email"].ToString();
                     d.password = ds.Tables[0].Rows[i]["password"].ToString();

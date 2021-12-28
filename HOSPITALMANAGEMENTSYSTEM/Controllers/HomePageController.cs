@@ -29,10 +29,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
         {
             return View();
         }
-        public ActionResult ReviewPage()
-        {
-            return View();
-        }
+        
         public ActionResult Login()
         {
             return View();
